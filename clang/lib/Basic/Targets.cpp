@@ -530,6 +530,8 @@ TargetInfo *AllocateTarget(const llvm::Triple &Triple,
     }
     case llvm::Triple::Haiku:
       return new HaikuX86_32TargetInfo(Triple, Opts);
+    case llvm::Triple::Mugo:
+      return new MugoX86_32TargetInfo(Triple, Opts);
     case llvm::Triple::RTEMS:
       return new RTEMSX86_32TargetInfo(Triple, Opts);
     case llvm::Triple::NaCl:

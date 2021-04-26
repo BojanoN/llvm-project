@@ -291,6 +291,31 @@ public:
       : OSTargetInfo<Target>(Triple, Opts) {}
 };
 
+// Mugo Target
+template <typename Target>
+class LLVM_LIBRARY_VISIBILITY MugoTargetInfo : public OSTargetInfo<Target> {
+protected:
+  void getOSDefines(const LangOptions &Opts, const llvm::Triple &Triple,
+                    MacroBuilder &Builder) const override {
+    Builder.defineMacro("__MUGO__");
+    Builder.defineMacro("__ELF__");
+    DefineStd(Builder, "unix", Opts);
+    if (this->HasFloat128)
+      Builder.defineMacro("__FLOAT128__");
+  }
+
+public:
+  MugoTargetInfo(const llvm::Triple &Triple, const TargetOptions &Opts)
+      : OSTargetInfo<Target>(Triple, Opts) {
+    this->SizeType = TargetInfo::UnsignedLong;
+    this->IntPtrType = TargetInfo::SignedLong;
+    this->PtrDiffType = TargetInfo::SignedLong;
+    this->ProcessIDType = TargetInfo::SignedLong;
+    this->TLSSupported = false;
+  }
+};
+
+
 // Haiku Target
 template <typename Target>
 class LLVM_LIBRARY_VISIBILITY HaikuTargetInfo : public OSTargetInfo<Target> {

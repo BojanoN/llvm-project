@@ -598,6 +598,22 @@ public:
   }
 };
 
+// x86-32 Mugo target
+class LLVM_LIBRARY_VISIBILITY MugoX86_32TargetInfo
+    : public MugoTargetInfo<X86_32TargetInfo> {
+public:
+  MugoX86_32TargetInfo(const llvm::Triple &Triple, const TargetOptions &Opts)
+      : MugoTargetInfo<X86_32TargetInfo>(Triple, Opts) {}
+
+  void getTargetDefines(const LangOptions &Opts,
+                        MacroBuilder &Builder) const override {
+    MugoTargetInfo<X86_32TargetInfo>::getTargetDefines(Opts, Builder);
+    Builder.defineMacro("__INTEL__");
+  }
+};
+
+
+
 // X86-32 MCU target
 class LLVM_LIBRARY_VISIBILITY MCUX86_32TargetInfo : public X86_32TargetInfo {
 public:

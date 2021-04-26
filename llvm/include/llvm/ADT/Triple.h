@@ -164,6 +164,8 @@ public:
   enum OSType {
     UnknownOS,
 
+    Mugo,
+
     Ananas,
     CloudABI,
     Darwin,
@@ -541,6 +543,10 @@ public:
   /// Tests whether the OS is Haiku.
   bool isOSHaiku() const {
     return getOS() == Triple::Haiku;
+  }
+
+  bool isOSMugo() const {
+    return getOS() == Triple::Mugo;
   }
 
   /// Tests whether the OS is Windows.

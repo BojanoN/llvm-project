@@ -30,6 +30,7 @@
 #include "ToolChains/Hurd.h"
 #include "ToolChains/Lanai.h"
 #include "ToolChains/Linux.h"
+#include "ToolChains/Mugo.h"
 #include "ToolChains/MSP430.h"
 #include "ToolChains/MSVC.h"
 #include "ToolChains/MinGW.h"
@@ -5183,6 +5184,9 @@ const ToolChain &Driver::getToolChain(const ArgList &Args,
       break;
     case llvm::Triple::Ananas:
       TC = std::make_unique<toolchains::Ananas>(*this, Target, Args);
+      break;
+    case llvm::Triple::Mugo:
+      TC = std::make_unique<toolchains::Mugo>(*this, Target, Args);
       break;
     case llvm::Triple::CloudABI:
       TC = std::make_unique<toolchains::CloudABI>(*this, Target, Args);

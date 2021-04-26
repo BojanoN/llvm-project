@@ -71,6 +71,7 @@ static_library("Driver") {
     "ToolChains/Gnu.cpp",
     "ToolChains/HIP.cpp",
     "ToolChains/Haiku.cpp",
+    "ToolChains/Mugo.cpp",
     "ToolChains/Hexagon.cpp",
     "ToolChains/Hurd.cpp",
     "ToolChains/InterfaceStubs.cpp",

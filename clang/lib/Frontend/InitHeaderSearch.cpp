@@ -271,6 +271,7 @@ void InitHeaderSearch::AddDefaultCIncludePaths(const llvm::Triple &triple,
   case llvm::Triple::Hurd:
   case llvm::Triple::Solaris:
   case llvm::Triple::OpenBSD:
+  case llvm::Triple::Mugo:
     llvm_unreachable("Include management is handled in the driver.");
 
   case llvm::Triple::CloudABI: {
